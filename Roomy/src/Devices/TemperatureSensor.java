@@ -1,11 +1,11 @@
 package Devices;
 
-public class TemperatureExt {
+public class TemperatureSensor {
 	
 	private float temperature;
 	private int id;
 	
-	TemperatureExt()
+	TemperatureSensor()
 	{
 		temperature = 0;
 	}
