@@ -5,8 +5,9 @@ public class TemperatureSensor {
 	private float temperature;
 	private int id;
 	
-	TemperatureSensor()
+	TemperatureSensor(int newId)
 	{
+		id = newId;
 		temperature = 0;
 	}
 	
