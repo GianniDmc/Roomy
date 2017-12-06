@@ -11,7 +11,7 @@ public class TemperatureSensor {
 		temperature = 0;
 	}
 	
-	public float getTemp()
+	public float temperature()
 	{
 		return temperature;
 	}

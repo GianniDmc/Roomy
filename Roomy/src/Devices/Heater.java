@@ -16,7 +16,7 @@ public class Heater {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public boolean getIsOn() {
+	public boolean isOn() {
 		return isOn;
 	}
 	public void setIsOn(boolean isOn) {
