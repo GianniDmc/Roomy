@@ -1,8 +1,0 @@
-Build-By: dummy
-Build-Jdk: 1.7.0_111
-Implementation-Title: Apache ODE
-Implementation-Version: 
-Implementation-Vendor: Apache Software Foundation
-Manifest-Version: 1.0
-Created-By: Buildr
-
