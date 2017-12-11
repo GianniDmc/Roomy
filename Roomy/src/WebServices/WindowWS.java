@@ -3,7 +3,9 @@ package WebServices;
 import Devices.Window ;
 
 public class WindowWS {
-	Window window = new Window(0);
+	
+	static Window window = new Window(0);
+	
 	
 	public void openWindow() {
 		window.open();

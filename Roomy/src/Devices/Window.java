@@ -30,6 +30,6 @@ public class Window {
 	
 	public void close() 
 	{
-		isOpen = true;
+		isOpen = false;
 	}
 }
