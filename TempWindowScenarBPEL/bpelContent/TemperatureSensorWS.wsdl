@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://WebServices" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://WebServices">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://WebServices">
+            <xs:element name="getTemperature">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTemperatureResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setTemperature">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="temp" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="setTemperatureRequest">
+        <wsdl:part name="parameters" element="ns:setTemperature"/>
+    </wsdl:message>
+    <wsdl:message name="getTemperatureRequest">
+        <wsdl:part name="parameters" element="ns:getTemperature"/>
+    </wsdl:message>
+    <wsdl:message name="getTemperatureResponse">
+        <wsdl:part name="parameters" element="ns:getTemperatureResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="TemperatureSensorWSPortType">
+        <wsdl:operation name="setTemperature">
+            <wsdl:input message="ns:setTemperatureRequest" wsaw:Action="urn:setTemperature"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTemperature">
+            <wsdl:input message="ns:getTemperatureRequest" wsaw:Action="urn:getTemperature"/>
+            <wsdl:output message="ns:getTemperatureResponse" wsaw:Action="urn:getTemperatureResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TemperatureSensorWSSoap11Binding" type="ns:TemperatureSensorWSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="setTemperature">
+            <soap:operation soapAction="urn:setTemperature" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getTemperature">
+            <soap:operation soapAction="urn:getTemperature" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="TemperatureSensorWSSoap12Binding" type="ns:TemperatureSensorWSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="setTemperature">
+            <soap12:operation soapAction="urn:setTemperature" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getTemperature">
+            <soap12:operation soapAction="urn:getTemperature" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="TemperatureSensorWSHttpBinding" type="ns:TemperatureSensorWSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="setTemperature">
+            <http:operation location="setTemperature"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getTemperature">
+            <http:operation location="getTemperature"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TemperatureSensorWS">
+        <wsdl:port name="TemperatureSensorWSHttpSoap11Endpoint" binding="ns:TemperatureSensorWSSoap11Binding">
+            <soap:address location="http://localhost:8080/TemperatureSensorService/services/TemperatureSensorWS.TemperatureSensorWSHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="TemperatureSensorWSHttpSoap12Endpoint" binding="ns:TemperatureSensorWSSoap12Binding">
+            <soap12:address location="http://localhost:8080/TemperatureSensorService/services/TemperatureSensorWS.TemperatureSensorWSHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="TemperatureSensorWSHttpEndpoint" binding="ns:TemperatureSensorWSHttpBinding">
+            <http:address location="http://localhost:8080/TemperatureSensorService/services/TemperatureSensorWS.TemperatureSensorWSHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
