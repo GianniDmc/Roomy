@@ -9,4 +9,9 @@ public class TemperatureSensorWS {
 	{
 		return tempSensor.temperature();
 	}
+	
+	public void setTemperature(double temp)
+	{
+		tempSensor.setTemp(temp);
+	}
 }

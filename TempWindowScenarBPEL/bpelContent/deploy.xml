@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:WebServices="http://WebServices" xmlns:tempWindowScenarBPEL.insa.fr="tempWindowScenarBPEL.insa.fr">
+  <process name="tempWindowScenarBPEL.insa.fr:TempWindowScenarBPEL">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="tempWindowScenarBPEL.insa.fr:TempWindowScenarBPELService" port="TempWindowScenarBPELPort"/>
+    </provide>
+    <invoke partnerLink="TemperatureSensorWSPartnerLink">
+      <service name="WebServices:TemperatureSensorWS" port="TemperatureSensorWSHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="WindowWSPartnerLink">
+      <service name="WebServices:WindowWS" port="WindowWSHttpSoap11Endpoint"/>
+    </invoke>
+  </process>
+</deploy>

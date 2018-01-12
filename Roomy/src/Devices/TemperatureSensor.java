@@ -16,7 +16,7 @@ public class TemperatureSensor {
 		return temperature;
 	}
 	
-	public void setTemp(float temp)
+	public void setTemp(double temp)
 	{
 		temperature = temp;
 	}

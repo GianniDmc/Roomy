@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://WebServices" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://WebServices">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://WebServices">
+            <xs:element name="closeWindow">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="openWindow">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getWindowState">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getWindowStateResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getWindowStateRequest">
+        <wsdl:part name="parameters" element="ns:getWindowState"/>
+    </wsdl:message>
+    <wsdl:message name="getWindowStateResponse">
+        <wsdl:part name="parameters" element="ns:getWindowStateResponse"/>
+    </wsdl:message>
+    <wsdl:message name="openWindowRequest">
+        <wsdl:part name="parameters" element="ns:openWindow"/>
+    </wsdl:message>
+    <wsdl:message name="closeWindowRequest">
+        <wsdl:part name="parameters" element="ns:closeWindow"/>
+    </wsdl:message>
+    <wsdl:portType name="WindowWSPortType">
+        <wsdl:operation name="getWindowState">
+            <wsdl:input message="ns:getWindowStateRequest" wsaw:Action="urn:getWindowState"/>
+            <wsdl:output message="ns:getWindowStateResponse" wsaw:Action="urn:getWindowStateResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="openWindow">
+            <wsdl:input message="ns:openWindowRequest" wsaw:Action="urn:openWindow"/>
+        </wsdl:operation>
+        <wsdl:operation name="closeWindow">
+            <wsdl:input message="ns:closeWindowRequest" wsaw:Action="urn:closeWindow"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WindowWSSoap11Binding" type="ns:WindowWSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getWindowState">
+            <soap:operation soapAction="urn:getWindowState" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="openWindow">
+            <soap:operation soapAction="urn:openWindow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="closeWindow">
+            <soap:operation soapAction="urn:closeWindow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WindowWSSoap12Binding" type="ns:WindowWSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getWindowState">
+            <soap12:operation soapAction="urn:getWindowState" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="openWindow">
+            <soap12:operation soapAction="urn:openWindow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="closeWindow">
+            <soap12:operation soapAction="urn:closeWindow" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WindowWSHttpBinding" type="ns:WindowWSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getWindowState">
+            <http:operation location="getWindowState"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="openWindow">
+            <http:operation location="openWindow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="closeWindow">
+            <http:operation location="closeWindow"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WindowWS">
+        <wsdl:port name="WindowWSHttpSoap11Endpoint" binding="ns:WindowWSSoap11Binding">
+            <soap:address location="http://localhost:8080/WindowService/services/WindowWS.WindowWSHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="WindowWSHttpSoap12Endpoint" binding="ns:WindowWSSoap12Binding">
+            <soap12:address location="http://localhost:8080/WindowService/services/WindowWS.WindowWSHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="WindowWSHttpEndpoint" binding="ns:WindowWSHttpBinding">
+            <http:address location="http://localhost:8080/WindowService/services/WindowWS.WindowWSHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
