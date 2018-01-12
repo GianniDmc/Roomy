@@ -2,21 +2,21 @@ package Devices;
 
 public class TemperatureSensor {
 	
-	private float temperature;
+	private double temperature;
 	private int id;
 	
-	TemperatureSensor(int newId)
+	public TemperatureSensor(int newId)
 	{
 		id = newId;
-		temperature = 0;
+		temperature = 0.0;
 	}
 	
-	public float temperature()
+	public double temperature()
 	{
 		return temperature;
 	}
 	
-	public void setTemp(float temp)
+	public void setTemp(double temp)
 	{
 		temperature = temp;
 	}

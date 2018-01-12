@@ -4,6 +4,12 @@ public class Window {
 	int id ;
 	boolean isOpen ;
 	
+	public Window(int newId)
+	{
+		id = newId;
+		isOpen = false;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -24,6 +30,6 @@ public class Window {
 	
 	public void close() 
 	{
-		isOpen = true;
+		isOpen = false;
 	}
 }
