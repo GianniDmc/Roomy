@@ -8,6 +8,7 @@ public class TempWindowWS {
 	static Window window = new Window(10);
 	static TemperatureSensor tempSensor = new TemperatureSensor(11);
 	
+	
 	public double getTemperature()
 	{
 		return tempSensor.temperature();
@@ -47,5 +48,5 @@ public class TempWindowWS {
 				closeWindow();
 			}
 		}
-	}
+	}	
 }
